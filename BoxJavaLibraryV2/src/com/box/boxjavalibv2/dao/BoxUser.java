@@ -48,6 +48,7 @@ public class BoxUser extends BoxUserBase {
     public static final String FIELD_AVATAR_URL = "avatar_url";
     public static final String FIELD_EXEMPT_FROM_DEVICE_LIMITS = "is_exempt_from_device_limits";
     public static final String FIELD_EXEMPT_FROM_LOGIN_VERIFICATION = "is_exempt_from_login_verification";
+    public static final String FIELD_BOX_NOTES_CREATION_ENABLED = "is_boxnotes_creation_enabled";
     public static final String FIELD_MY_TAGS = "my_tags";
 
     /**
@@ -411,6 +412,27 @@ public class BoxUser extends BoxUserBase {
     @JsonProperty(FIELD_EXEMPT_FROM_LOGIN_VERIFICATION)
     private void setExemptFromLoginVerification(boolean isExemptFromLoginVerification) {
         put(FIELD_EXEMPT_FROM_LOGIN_VERIFICATION, isExemptFromLoginVerification);
+    }
+
+    /**
+     * Whether or not this user must use two-factor authentication.
+     * 
+     * @return whether box notes creation is enabled
+     */
+    @JsonProperty(FIELD_BOX_NOTES_CREATION_ENABLED)
+    public Boolean isBoxNotesCreationEnabled() {
+        return (Boolean) getValue(FIELD_BOX_NOTES_CREATION_ENABLED);
+    }
+
+    /**
+     * Setter. This is only used by {@see <a href="http://jackson.codehaus.org">Jackson JSON processer</a>}
+     * 
+     * @param isBoxNotesCreationEnabled
+     *            whether box notes creation is enabled
+     */
+    @JsonProperty(FIELD_BOX_NOTES_CREATION_ENABLED)
+    private void setBoxNotesCreationEnabled(boolean isBoxNotesCreationEnabled) {
+        put(FIELD_BOX_NOTES_CREATION_ENABLED, isBoxNotesCreationEnabled);
     }
 
     public BoxUser(IBoxParcelWrapper in) {
